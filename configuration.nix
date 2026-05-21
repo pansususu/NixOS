@@ -42,6 +42,9 @@
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     enable = true;
+    # IMPORTANTE: Dile explícitamente qué paquete debe modificar
+    spotifyPackage = pkgs.spotify; 
+    
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
     enabledExtensions = with spicePkgs.extensions; [
@@ -61,6 +64,7 @@
     fastfetch
     discord
     btop
+    spotify
   ];
 
   # Enviroment Variables

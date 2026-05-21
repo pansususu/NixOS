@@ -58,7 +58,9 @@
     alacritty
     firefox
     git
+    fastfetch
     discord
+    btop
   ];
 
   # Enviroment Variables

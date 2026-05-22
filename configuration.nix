@@ -101,6 +101,8 @@
     ];
   };
 
+  programs.fuse.userAllowOther = true;
+
   # Nvidia & Graphics
   services.xserver.videoDrivers = [ "nvidia" ];
   

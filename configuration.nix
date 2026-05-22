@@ -42,7 +42,6 @@
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     enable = true;
-    # IMPORTANTE: Dile explícitamente qué paquete debe modificar
     spotifyPackage = pkgs.spotify; 
     
     theme = spicePkgs.themes.catppuccin;
@@ -75,7 +74,7 @@
     ];
   };
 
-  # Programs (Steam, GPG, MTR)
+  # Programs (Steam,MTR, ...)
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -87,6 +86,19 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     gamescopeSession.enable = true;
+  };
+  
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      fuse
+      libglvnd
+      libxkbcommon
+      zlib
+      stdenv.cc.cc
+      icu
+      openssl
+    ];
   };
 
   # Nvidia & Graphics

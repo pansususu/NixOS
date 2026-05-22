@@ -29,7 +29,7 @@
   # User
   users.users.sabrina = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" ];
+    extraGroups = [ "wheel" "audio" "video" "fuse" ];
     packages = with pkgs; [ tree ];
   };
 

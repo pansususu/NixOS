@@ -106,7 +106,7 @@
 
   programs.fuse.userAllowOther = true;
 
-  # Nvidia & Graphics
+  # Nvidia & Asus
   services.xserver.videoDrivers = [ "nvidia" ];
   
   hardware.graphics = {
@@ -131,6 +131,8 @@
 
   hardware.xpadneo.enable = true;
   hardware.enableRedistributableFirmware = true;
+
+  services.asusd.enable = true;
 
   # Zram
    zramSwap = {

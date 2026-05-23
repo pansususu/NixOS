@@ -66,7 +66,7 @@
     discord
     btop
     spotify
-    rog-control-center
+    asusctl
   ];
 
   # Enviroment Variables

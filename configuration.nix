@@ -120,6 +120,12 @@
   hardware.xpadneo.enable = true;
   hardware.enableRedistributableFirmware = true;
 
+  # Zram
+   zramSwap = {
+  enable = true;
+  memoryPercent = 50;
+};
+
   # DE (Kde Plasma 6)
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;

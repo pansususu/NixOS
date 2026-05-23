@@ -66,6 +66,7 @@
     discord
     btop
     spotify
+    rog-control-center
   ];
 
   # Enviroment Variables

@@ -1,3 +1,5 @@
+# ¡THIS IS A CONFIG FOR NVIDIA LAPTOP! (My laptop is ASUS TUF Gaming F15 FX506LH_FX506LH (1.0)
+
 { config, lib, pkgs, inputs, ... }:
 
 {
@@ -116,6 +118,15 @@
     open = false; # Owner Driver
     powerManagement.enable = false; # Change to true if you have problems to poweroff/sleep
   };
+
+  hardware.nvidia.prime = {
+  offload = {
+    enable = true;
+    enableOffloadCmd = true;
+  };
+  intelBusId = "PCI:0:2:0";
+  nvidiaBusId = "PCI:1:0:0";
+};
 
   hardware.xpadneo.enable = true;
   hardware.enableRedistributableFirmware = true;

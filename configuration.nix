@@ -67,6 +67,7 @@
     btop
     spotify
     asusctl
+    lutris
   ];
 
   # Enviroment Variables

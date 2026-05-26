@@ -67,6 +67,7 @@
     btop
     spotify
     asusctl
+    brave
   ];
 
   # Enviroment Variables

@@ -20,7 +20,7 @@
     font = "Lat2-Terminus16";
     keyMap = "la-latin1";
   };
-
+ 
   # Sound 
   services.pipewire = {
     enable = true;
@@ -58,18 +58,53 @@
   # Packages
   environment.systemPackages = with pkgs; [
     nano
+    fortune
     wget
+    waybar
     kitty
     firefox
     git
     fastfetch
-    discord
     btop
     spotify
     asusctl
     bazaar
     rofi
+    nemo
+    grim
+    slurp
+    wl-clipboard
+    awww
+    hyprshot
+    brightnessctl
+    nwg-look
+    pavucontrol
+    prismlauncher
+    cowsay
+    discord
+    playerctl
   ];
+
+#  nixpkgs.config.permittedInsecurePackages = [
+#    "pnpm-10.29.2" # This is if you want Vesktop instead of Discord
+#  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    (runCommand "local-icons" {} ''
+      mkdir -p $out/share/icons
+      cp -r /home/sabrina/.icons/* $out/share/icons/ 2>/dev/null || true
+    '')
+  ];
+
+  # Cursors
+  environment.variables = {
+    XCURSOR_SIZE = "24";
+    XCURSOR_THEME = "oreo_pink_cursors"; 
+ };
 
   # Environment Variables
   environment.sessionVariables = {
@@ -78,7 +113,6 @@
       "$HOME/.local/share/flatpak/exports/share"
   ];
 
-    XDG_SESSION_TYPE = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1"; 
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
@@ -112,6 +146,21 @@
 
   programs.fuse.userAllowOther = true;
 
+  # Alias Bash
+  programs.bash.shellAliases = {
+    cdnix = "cd /etc/nixos";
+
+    ednix = "sudo nano /etc/nixos/configuration.nix";
+
+    edhypr = "nano ~/.config/hypr/hyprland.lua";
+
+    nixrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
+
+    nixgen = "nixos-rebuild list-generations";
+
+    nixclean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +2 && sudo nix-store --gc && nixrebuild";
+  };
+
   # Nvidia & Asus
   services.xserver.videoDrivers = [ "nvidia" ];
   
@@ -122,7 +171,7 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false; # Owner Driver
+    open = false; # Owner driver
     powerManagement.enable = false; # Change to true if you have problems to poweroff/sleep
   };
 
@@ -147,28 +196,22 @@
   };
 
   # Greteer/Login Manager 
-  services.displayManager.sddm = {
+  services.displayManager.ly = {
     enable = true;
-    wayland.enable = true;
+    
+    settings = {
+    animation = 0;
+    };
   };
 
-  # WM and DE (Qtile-Kde Plasma 6)
-  services.xserver.windowManager.qtile = {
-    enable = true;
-    extraPackages = python3Packages: with python3Packages; [
-      qtile-extras
-    ];
-  };
-
-  services.desktopManager.plasma6.enable = true;
+  # WM (Hyprland)
+  programs.hyprland.enable = true;
 
   # Portals
   xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.common.default = "*";
-  };
+  enable = true;
+  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+};
 
   # SSH
   services.openssh.enable = true;
@@ -176,5 +219,5 @@
   # Flake 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  system.stateVersion = "25.11"; 
+  system.stateVersion = "26.05"; 
 }

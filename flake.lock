@@ -1,0 +1,146 @@
+{
+  "nodes": {
+    "labwc-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780908679,
+        "narHash": "sha256-vj+QUzjbbxri6lIS1H80FTiNQQiUx60zXiBe7K2u+P4=",
+        "owner": "singularityos-lab",
+        "repo": "labwc",
+        "rev": "77ec8147176af5de118357c418418b9d0695eaab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "singularityos-lab",
+        "repo": "labwc",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1782691344,
+        "narHash": "sha256-i5nw9BYYsMDAaOC4J+JmTof6b2GhlyH076awYRNrTV8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1f01958ffb5b3545c96d9ef2f4e24c5e5e1eb846",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1782723713,
+        "narHash": "sha256-oPXCU/SSUokcGaJREHibG1CBX3+s/W7orDWQOZDsEeQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b5aa0fbd538984f6e3d201be0005b4463d8b09f8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1782467914,
+        "narHash": "sha256-inDx/w70OSJoJPqtKh0BrzAsbZZhpya7YgS43jHnhwg=",
+        "rev": "e73de5be04e0eff4190a1432b946d469c794e7b4",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1022855.e73de5be04e0/nixexprs.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "singularity-desktop": "singularity-desktop",
+        "spicetify-nix": "spicetify-nix"
+      }
+    },
+    "singularity-desktop": {
+      "inputs": {
+        "labwc-src": "labwc-src",
+        "nixpkgs": "nixpkgs_2",
+        "singularity-desktop-src": "singularity-desktop-src"
+      },
+      "locked": {
+        "lastModified": 1782939553,
+        "narHash": "sha256-onMxFUzJy1ImcdHaP+tEiC4TXLiuKwZtzO5lXxTXaiY=",
+        "owner": "mateoalfaro",
+        "repo": "singularity-flake",
+        "rev": "fa54989fdccfe421a1d8afd0507cb9339f6601c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mateoalfaro",
+        "repo": "singularity-flake",
+        "type": "github"
+      }
+    },
+    "singularity-desktop-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782794944,
+        "narHash": "sha256-b0fIWFwyhzq+F+263ge7IX2bvceur/wEL7nTmkqU8pc=",
+        "ref": "refs/heads/master",
+        "rev": "c7a6f3d4532f53f5b0e90ac35b5736201da12dbc",
+        "revCount": 153,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/singularityos-lab/singularity-desktop.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/singularityos-lab/singularity-desktop.git"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1782633406,
+        "narHash": "sha256-JOSMk12GgnTLVlUSCuKkqyUF6cw82wl7t7e1WuFfg5s=",
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "rev": "5ff9a6ca9dcbad7cccea2c97d30237468b16feda",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

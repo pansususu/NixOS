@@ -23,6 +23,10 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
+  services.xserver.xkb = {
+    layout = "latam"; 
+  };
+
   hardware.xpadneo.enable = true;
   hardware.enableRedistributableFirmware = true;
 

@@ -38,10 +38,37 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
-    nano fortune wget waybar kitty firefox git fastfetch btop spotify asusctl
-    bazaar rofi qbittorrent nemo grim slurp wl-clipboard awww hyprshot
-    brightnessctl nwg-look virt-manager pavucontrol prismlauncher cowsay
-    discord playerctl
+    pipewire
+    pulseaudio
+    nano 
+    inputs.zen-browser.packages.${pkgs.system}.default
+    fortune 
+    wget 
+    helix
+    obsidian
+    kitty 
+    git 
+    fastfetch 
+    btop 
+    spotify 
+    asusctl
+    bazaar 
+    rofi 
+    qbittorrent 
+    nemo 
+    grim 
+    slurp 
+    wl-clipboard 
+    noctalia-shell
+    hyprshot
+    brightnessctl 
+    nwg-look 
+    virt-manager 
+    pavucontrol 
+    prismlauncher 
+    cowsay
+    discord 
+    playerctl
   ];
 
   fonts.packages = with pkgs; [
@@ -96,15 +123,44 @@
   # Alias Bash
   programs.bash.shellAliases = {
     cdnix = "cd /etc/nixos";
+   
     ednix = "sudo nano /etc/nixos/configuration.nix";
+
+    edsystem = "sudo nano /etc/nixos/modules/system.nix";
+
+    edhardware = "sudo nano /etc/nixos/modules/hardware.nix";
+
+    ednetwork = "sudo nano /etc/nixos/modules/networking.nix";
+
+    edboot = "sudo nano /etc/nixos/modules/boot.nix";
+ 
+    edusers = "sudo nano /etc/nixos/modules/users.nix";
+
+    showsystem = "sudo cat /etc/nixos/modules/system.nix";
+
+    showhardware = "sudo cat /etc/nixos/modules/hardware.nix";
+
+    shownetwork = "sudo cat /etc/nixos/modules/networking.nix";
+
+    showboot = "sudo cat /etc/nixos/modules/boot.nix";
+ 
     shownix = "sudo cat /etc/nixos/configuration.nix";
-    edhypr = "nano ~/.config/hypr/hyprland.lua";
+
+    edhypr = "nano -l ~/.config/hypr/hyprland.lua";
+
     showhypr = "cat ~/.config/hypr/hyprland.lua";
+
     nixrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
+
     nixgen = "nixos-rebuild list-generations";
+
     edflake = "sudo nano /etc/nixos/flake.nix";
+
     showflake = "sudo cat /etc/nixos/flake.nix";
+
     nixclean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +2 && sudo nix-store --gc && nixrebuild";
+  
+    clean = "clear";
   };
 
   # Greeter / Login Manager 
@@ -113,13 +169,8 @@
     settings.animation = 1;
   };
 
-  # WM & DEs
+  # WM 
   programs.hyprland.enable = true;
-
-  programs.singularity-desktop = {
-    enable = true;
-    greeter.enable = false;
-  };
 
   # Portals
   xdg.portal = {

@@ -1,34 +1,42 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  services.xserver.videoDrivers = [ "nvidia" ];
-  
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
   hardware.nvidia = {
+    enable = true;
     modesetting.enable = true;
-    open = false;
+    kernelModule = "closed";
     powerManagement.enable = false;
   };
 
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-  };
+  environment.etc."X11/xorg.conf.d/10-nvidia-prime.conf".text = ''
+    Section "ServerLayout"
+      Identifier "layout"
+      Option "AllowEmptyInitialConfiguration"
+    EndSection
 
-  services.xserver.xkb = {
-    layout = "latam"; 
-  };
+    Section "Device"
+      Identifier "intel"
+      Driver "modesetting"
+      BusID  "PCI:0:2:0"
+    EndSection
 
-  hardware.xpadneo.enable = true;
-  hardware.enableRedistributableFirmware = true;
+    Section "Device"
+      Identifier "nvidia"
+      Driver "nvidia"
+      BusID  "PCI:1:0:0"
+      Option "AllowEmptyInitialConfiguration"
+    EndSection
+  '';
+
+  services.mdevd.enable = true;
+  services.seatd.enable = true;
 
   services.asusd.enable = true;
+
+  hardware.firmware = [ pkgs.linux-firmware ];
 }

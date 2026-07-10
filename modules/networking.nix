@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking.hostName = "finix";
+  services.networkmanager.enable = true;
 
-  # SSH
   services.openssh.enable = true;
 }

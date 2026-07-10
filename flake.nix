@@ -1,20 +1,46 @@
 {
-  description = "Flakes";
+  description = "Finix - flake configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    finix.url = "github:finix-community/finix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, finix, spicetify-nix, ... }@inputs: let
+    pkgs = import nixpkgs {
       system = "x86_64-linux";
-      modules = [
+      config.allowUnfree = true;
+    };
+  in {
+    nixosConfigurations.finix = finix.lib.finixSystem {
+      inherit (pkgs) lib;
+
+      modules = with finix.nixosModules; [
+        {
+          nixpkgs.pkgs = nixpkgs.lib.mkDefault pkgs;
+        }
         ./configuration.nix
         { _module.args = { inherit inputs; }; }
         spicetify-nix.nixosModules.spicetify
+        nix-daemon
+        openssh
+        sysklogd
+        limine
+        sudo
+        polkit
+        getty
+        bash
+        networkmanager
+        ly
+        xorg
+        flatpak
+        pipewire
       ];
+
+      specialArgs = {
+        modulesPath = toString nixpkgs + "/nixos/modules";
+      };
     };
   };
 }

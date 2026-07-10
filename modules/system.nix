@@ -1,34 +1,31 @@
 { config, pkgs, inputs, ... }:
 
 {
+  services.dbus.enable = true;
+
   time.timeZone = "America/Asuncion";
 
-  # Language & Console
   i18n.defaultLocale = "es_PY.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "la-latin1";
-  };
- 
-  # Sound 
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-  services.libinput.enable = true;
+  hardware.console.keyMap = "la-latin1";
 
-  # Software Unfree & Flatpak
-  nixpkgs.config.allowUnfree = true;
+  programs.xorg = {
+    enable = true;
+    xkb.layout = "latam";
+  };
+
+  programs.pipewire.enable = true;
+
+  services.ly.enable = true;
+
   services.flatpak.enable = true;
 
-  # Spicetify (Nota: necesita 'inputs' arriba para heredar la flake)
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
     enable = true;
-    spotifyPackage = pkgs.spotify; 
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "mocha";
+    spotifyPackage = pkgs.spotify;
+    theme = spicePkgs.themes.comfy;
+    colorScheme = "Sakura";
     enabledExtensions = with spicePkgs.extensions; [
       adblock
       hidePodcasts
@@ -36,39 +33,52 @@
     ];
   };
 
-  # Packages
   environment.systemPackages = with pkgs; [
+    i3
+    i3status
+    i3lock
+    i3blocks
+    dmenu
+    picom
+    feh
     pipewire
+    distroshelf
+    distrobox
+    vinegar
+    vivaldi
     pulseaudio
-    nano 
-    inputs.zen-browser.packages.${pkgs.system}.default
-    fortune 
-    wget 
+    nano
+    pkgs.dnsutils
+    fortune
+    wget
     helix
     obsidian
-    kitty 
-    git 
-    fastfetch 
-    btop 
-    spotify 
+    kitty
+    git
+    fastfetch
+    btop
+    spotify
     asusctl
-    bazaar 
-    rofi 
-    qbittorrent 
-    nemo 
-    grim 
-    slurp 
-    wl-clipboard 
-    noctalia-shell
-    hyprshot
-    brightnessctl 
-    nwg-look 
-    virt-manager 
-    pavucontrol 
-    prismlauncher 
+    bazaar
+    qbittorrent
+    brightnessctl
+    virt-manager
+    pavucontrol
+    prismlauncher
+    killall
     cowsay
-    discord 
+    discord
+    waybar
+    rofi
+    mako
+    swaybg
+    swaylock
+    grim
+    slurp
+    swappy
     playerctl
+    vscode
+    python3
   ];
 
   fonts.packages = with pkgs; [
@@ -82,102 +92,33 @@
     '')
   ];
 
-  # Cursors & Session Variables
-  environment.variables = {
-    XCURSOR_SIZE = "24";
-    XCURSOR_THEME = "oreo_pink_cursors"; 
-  };
+  environment.etc."profile.d/finix-env.sh".text = ''
+    export XCURSOR_SIZE=24
+    export XCURSOR_THEME=oreo_black_cursors
+    export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+    export ELECTRON_OZONE_PLATFORM_HINT=auto
+  '';
 
-  environment.sessionVariables = {
-    XDG_DATA_DIRS = [
-      "/var/lib/flatpak/exports/share"
-      "$HOME/.local/share/flatpak/exports/share"
-    ];
-    WLR_NO_HARDWARE_CURSORS = "1"; 
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-  };
+  environment.etc."profile.d/aliases.sh".text = ''
+    alias cdnix="cd /etc/nixos"
+    alias ednix="sudo nano /etc/nixos/configuration.nix"
+    alias edsystem="sudo nano /etc/nixos/modules/system.nix"
+    alias edhardware="sudo nano /etc/nixos/modules/hardware.nix"
+    alias ednetwork="sudo nano /etc/nixos/modules/networking.nix"
+    alias edboot="sudo nano /etc/nixos/modules/boot.nix"
+    alias edusers="sudo nano /etc/nixos/modules/users.nix"
+    alias showsystem="sudo cat /etc/nixos/modules/system.nix"
+    alias showhardware="sudo cat /etc/nixos/modules/hardware.nix"
+    alias shownetwork="sudo cat /etc/nixos/modules/networking.nix"
+    alias showboot="sudo cat /etc/nixos/modules/boot.nix"
+    alias shownix="sudo cat /etc/nixos/configuration.nix"
+    alias nixrebuild="sudo nixos-rebuild switch --flake /etc/nixos#finix"
+    alias nixgen="nixos-rebuild list-generations"
+    alias edflake="sudo nano /etc/nixos/flake.nix"
+    alias showflake="sudo cat /etc/nixos/flake.nix"
+    alias nixclean="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +2 && sudo nix-store --gc && nixrebuild"
+    alias clean="clear"
+  '';
 
-  # Programs (Steam, MTR, Nix-LD, etc)
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
-  };
   
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      fuse libglvnd libxkbcommon zlib stdenv.cc.cc icu openssl
-    ];
-  };
-
-  programs.fuse.userAllowOther = true;
-
-  # Alias Bash
-  programs.bash.shellAliases = {
-    cdnix = "cd /etc/nixos";
-   
-    ednix = "sudo nano /etc/nixos/configuration.nix";
-
-    edsystem = "sudo nano /etc/nixos/modules/system.nix";
-
-    edhardware = "sudo nano /etc/nixos/modules/hardware.nix";
-
-    ednetwork = "sudo nano /etc/nixos/modules/networking.nix";
-
-    edboot = "sudo nano /etc/nixos/modules/boot.nix";
- 
-    edusers = "sudo nano /etc/nixos/modules/users.nix";
-
-    showsystem = "sudo cat /etc/nixos/modules/system.nix";
-
-    showhardware = "sudo cat /etc/nixos/modules/hardware.nix";
-
-    shownetwork = "sudo cat /etc/nixos/modules/networking.nix";
-
-    showboot = "sudo cat /etc/nixos/modules/boot.nix";
- 
-    shownix = "sudo cat /etc/nixos/configuration.nix";
-
-    edhypr = "nano -l ~/.config/hypr/hyprland.lua";
-
-    showhypr = "cat ~/.config/hypr/hyprland.lua";
-
-    nixrebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
-
-    nixgen = "nixos-rebuild list-generations";
-
-    edflake = "sudo nano /etc/nixos/flake.nix";
-
-    showflake = "sudo cat /etc/nixos/flake.nix";
-
-    nixclean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +2 && sudo nix-store --gc && nixrebuild";
-  
-    clean = "clear";
-  };
-
-  # Greeter / Login Manager 
-  services.displayManager.ly = {
-    enable = true;
-    settings.animation = 1;
-  };
-
-  # WM 
-  programs.hyprland.enable = true;
-
-  # Portals
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
-  # Virtualisation
-  virtualisation.libvirtd.enable = true;
 }

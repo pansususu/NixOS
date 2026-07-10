@@ -8,7 +8,6 @@
     ./modules/networking.nix
     ./modules/system.nix
     ./modules/users.nix
-    ./services/asusd.nix
     ./services/libvirtd.nix
   ];
 

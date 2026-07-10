@@ -2,7 +2,7 @@
   description = "Finix - flake configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     finix.url = "github:finix-community/finix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };

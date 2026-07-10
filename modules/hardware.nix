@@ -33,10 +33,9 @@
     EndSection
   '';
 
-  services.mdevd.enable = true;
-  services.seatd.enable = true;
+  services.gardendevd.enable = true;
 
-  services.asusd.enable = true;
+  services.seatd.enable = true;
 
   hardware.firmware = [ pkgs.linux-firmware ];
 }

@@ -2,11 +2,11 @@
   "nodes": {
     "finix": {
       "locked": {
-        "lastModified": 1783640951,
-        "narHash": "sha256-6Ra81ttYP/D6aqbvLlCa4yeQWC6JHuWeoAkAng87vzo=",
+        "lastModified": 1783641874,
+        "narHash": "sha256-9oy+HkIe2LiIhmTQmUJwV2IoBFUKUMjvnuw209xRhlc=",
         "owner": "finix-community",
         "repo": "finix",
-        "rev": "8739ecd99d7d8c6ce091b50e8b93878a4c512acb",
+        "rev": "449f374a0c3eb0f56e1fd2b741e41a40ed454ab9",
         "type": "github"
       },
       "original": {
@@ -17,16 +17,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1783389287,
-        "narHash": "sha256-0xIy4dVLqq47rA+mRy0hXDfjhQd4E5PoIns/RmB7nR4=",
+        "lastModified": 1783224372,
+        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0ad6f47ea4fe188f4bc8f0380f93ae8523337c6c",
+        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-26.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }

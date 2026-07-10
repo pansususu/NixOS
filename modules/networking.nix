@@ -6,5 +6,4 @@
 
   services.openssh.enable = true;
 
-  services.networkmanager.enable = true;⁠
 }

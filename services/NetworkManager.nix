@@ -12,7 +12,6 @@
   config = lib.mkIf config.networking.networkmanager.enable {
     environment.systemPackages = with pkgs; [ networkmanager ];
 
-    # NetworkManager requiere que dbus esté completamente listo para operar
     finit.services.networkmanager = {
       description = "NetworkManager daemon";
       command = "${pkgs.networkmanager}/bin/NetworkManager --no-daemon";

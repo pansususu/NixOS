@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    finix.url = "github:finix-community/finix";
+    finix.url = "github: FixeQD:finix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 

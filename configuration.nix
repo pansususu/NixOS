@@ -10,6 +10,7 @@
     ./modules/users.nix
     ./services/libvirtd.nix
     ./services/NetworkManager.nix
+    ./services/ly.nix
   ];
 
 }

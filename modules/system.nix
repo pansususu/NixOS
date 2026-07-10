@@ -68,14 +68,7 @@
     killall
     cowsay
     discord
-    waybar
     rofi
-    mako
-    swaybg
-    swaylock
-    grim
-    slurp
-    swappy
     playerctl
     vscode
     python3

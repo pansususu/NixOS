@@ -34,13 +34,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    i3
-    i3status
-    i3lock
-    i3blocks
-    dmenu
-    picom
-    feh
     pipewire
     distroshelf
     distrobox
@@ -109,9 +102,11 @@
     alias nixgen="nixos-rebuild list-generations"
     alias edflake="sudo nano /etc/nixos/flake.nix"
     alias showflake="sudo cat /etc/nixos/flake.nix"
-    alias nixclean="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +2 && sudo nix-store --gc && nixrebuild"
+    alias nixclean="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild"
     alias clean="clear"
   '';
 
-  
+  programs.niri = {
+    enable = true;
+  };
 }

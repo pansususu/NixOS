@@ -125,13 +125,13 @@
 
   environment.etc."profile.d/finix-env.sh".text = ''
     export XCURSOR_SIZE=24
-    export XCURSOR_THEME=oreo_black_cursors
+    export XCURSOR_THEME=oreo_spark_light_pink_cursors
     export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
     export ELECTRON_OZONE_PLATFORM_HINT=auto
     export LANG=es_PY.UTF-8
     export LOCALE_ARCHIVE=/run/current-system/sw/lib/locale/locale-archive
     export GTK_THEME=Adwaita:dark
-    export XCURSOR_THEME=oreo_black_cursors
+    export XCURSOR_THEME=oreo_spark_light_pink_cursors
   '';
 
   environment.etc."profile.d/aliases.sh".text = ''

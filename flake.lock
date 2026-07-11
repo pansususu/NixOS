@@ -2,15 +2,15 @@
   "nodes": {
     "finix": {
       "locked": {
-        "lastModified": 1783641874,
-        "narHash": "sha256-9oy+HkIe2LiIhmTQmUJwV2IoBFUKUMjvnuw209xRhlc=",
-        "owner": "finix-community",
+        "lastModified": 1783644020,
+        "narHash": "sha256-ljQ/axwnbwwbvBMjfxinIa0WZKp62bppirjChNV5J9c=",
+        "owner": "FixeQD",
         "repo": "finix",
-        "rev": "449f374a0c3eb0f56e1fd2b741e41a40ed454ab9",
+        "rev": "1d4cd9cafdae4a5c0b48526c56f9ff115ba8d6fb",
         "type": "github"
       },
       "original": {
-        "owner": "finix-community",
+        "owner": "FixeQD",
         "repo": "finix",
         "type": "github"
       }

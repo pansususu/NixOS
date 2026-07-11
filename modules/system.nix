@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
+  finit.runlevel = 3;
+
   services.dbus.enable = true;
 
   time.timeZone = "America/Asuncion";
@@ -16,8 +18,15 @@
   programs.pipewire.enable = true;
 
   services.ly.enable = true;
+  services.niri.enable = true;
 
   services.flatpak.enable = true;
+
+  services.sysklogd.enable = true;
+  
+  services.nix-daemon.enable = true;
+
+  services.nix-daemon.settings.experimental-features = [ "nix-command" "flakes" ];
 
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
@@ -34,6 +43,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    seatd
+    niri
+    waybar
     pipewire
     distroshelf
     distrobox
@@ -46,7 +58,7 @@
     wget
     helix
     obsidian
-    kitty
+    alacritty
     git
     fastfetch
     btop
@@ -65,6 +77,9 @@
     playerctl
     vscode
     python3
+    nixos-rebuild-ng
+    iproute2
+    iputils
   ];
 
   fonts.packages = with pkgs; [
@@ -83,6 +98,8 @@
     export XCURSOR_THEME=oreo_black_cursors
     export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
     export ELECTRON_OZONE_PLATFORM_HINT=auto
+    export LANG=es_PY.UTF-8
+    export LOCALE_ARCHIVE=/run/current-system/sw/lib/locale/locale-archive
   '';
 
   environment.etc."profile.d/aliases.sh".text = ''
@@ -103,10 +120,8 @@
     alias edflake="sudo nano /etc/nixos/flake.nix"
     alias showflake="sudo cat /etc/nixos/flake.nix"
     alias nixclean="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild"
+    alias eduser="sudo nano /etc/nixos/modules/users.nix"
     alias clean="clear"
   '';
 
-  programs.niri = {
-    enable = true;
-  };
 }

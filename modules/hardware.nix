@@ -37,5 +37,7 @@
 
   services.seatd.enable = true;
 
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+
   hardware.firmware = [ pkgs.linux-firmware ];
 }

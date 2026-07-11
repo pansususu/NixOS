@@ -105,6 +105,8 @@
     xwayland-satellite
   ];
 
+  xdg.icons.enable = true;
+
   fonts.fontconfig.enable = true;
 
   fonts.packages = with pkgs; [

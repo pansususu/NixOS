@@ -141,7 +141,7 @@
     alias shownetwork="sudo cat /etc/nixos/modules/networking.nix"
     alias showboot="sudo cat /etc/nixos/modules/boot.nix"
     alias shownix="sudo cat /etc/nixos/configuration.nix"
-    alias nixrebuild="sudo git -C /etc/nixos add . && sudo nixos-rebuild switch --flake /etc/nixos#finix"
+    alias nixrebuild="sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'auto: update config' && sudo nixos-rebuild switch --flake /etc/nixos#finix"
     alias nixgen="nixos-rebuild list-generations"
     alias edflake="sudo nano /etc/nixos/flake.nix"
     alias showflake="sudo cat /etc/nixos/flake.nix"

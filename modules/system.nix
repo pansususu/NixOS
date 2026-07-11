@@ -30,6 +30,12 @@
     jack.enable = true;
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
   programs.niri.enable = true;
 
   services.ly.enable = true;
@@ -99,6 +105,7 @@
     nautilus
     nwg-look
     papirus-icon-theme
+    steam
   ];
 
   fonts.fontconfig.enable = true;

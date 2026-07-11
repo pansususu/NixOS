@@ -30,11 +30,6 @@
     jack.enable = true;
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
 
   programs.niri.enable = true;
 

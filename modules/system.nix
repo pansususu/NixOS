@@ -101,6 +101,7 @@
     nwg-look
     papirus-icon-theme
     steam
+    xwayland-satellite
   ];
 
   fonts.fontconfig.enable = true;

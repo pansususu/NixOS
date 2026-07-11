@@ -101,6 +101,7 @@
     nwg-look
     papirus-icon-theme
     steam
+    oreo-cursors-plus   
     xwayland-satellite
   ];
 

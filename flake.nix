@@ -2,12 +2,13 @@
   description = "Finix - flake configuration";
 
   inputs = {
+    noctalia.url = "github:noctalia-dev/noctalia";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     finix.url = "github:FixeQD/finix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, finix, spicetify-nix, ... }@inputs: let
+  outputs = { self, nixpkgs, finix, spicetify-nix, noctalia,  ... }@inputs: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
@@ -37,6 +38,7 @@
         xorg
         flatpak
         pipewire
+        niri
       ];
 
       specialArgs = {
@@ -45,3 +47,4 @@
     };
   };
 }
+

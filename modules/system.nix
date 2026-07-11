@@ -15,15 +15,21 @@
     xkb.layout = "latam";
   };
 
-  programs.pipewire.enable = true;
+  programs.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    jack.enable = true;
+  };
+
+  programs.niri.enable = true;
 
   services.ly.enable = true;
-  services.niri.enable = true;
 
   services.flatpak.enable = true;
 
   services.sysklogd.enable = true;
-  
+
   services.nix-daemon.enable = true;
 
   services.nix-daemon.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -42,16 +48,17 @@
     ];
   };
 
+  environment.pathsToLink = [ "/share/applications" ];
+
   environment.systemPackages = with pkgs; [
     seatd
-    niri
     waybar
     pipewire
+    wireplumber
     distroshelf
     distrobox
     vinegar
     vivaldi
-    pulseaudio
     nano
     pkgs.dnsutils
     fortune
@@ -63,6 +70,7 @@
     fastfetch
     btop
     spotify
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     asusctl
     bazaar
     qbittorrent
@@ -80,7 +88,10 @@
     nixos-rebuild-ng
     iproute2
     iputils
+    wev
   ];
+
+  fonts.fontconfig.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.caskaydia-cove
@@ -96,7 +107,7 @@
   environment.etc."profile.d/finix-env.sh".text = ''
     export XCURSOR_SIZE=24
     export XCURSOR_THEME=oreo_black_cursors
-    export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+    export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
     export ELECTRON_OZONE_PLATFORM_HINT=auto
     export LANG=es_PY.UTF-8
     export LOCALE_ARCHIVE=/run/current-system/sw/lib/locale/locale-archive

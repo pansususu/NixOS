@@ -9,6 +9,7 @@
     ./modules/system.nix
     ./modules/users.nix
     ./services/libvirtd.nix
+    ./services/zram.nix
   ];
 
 }

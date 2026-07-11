@@ -5,6 +5,14 @@
 
   services.dbus.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    portals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+  };
+
   time.timeZone = "America/Asuncion";
 
   i18n.defaultLocale = "es_PY.UTF-8";
@@ -52,7 +60,6 @@
 
   environment.systemPackages = with pkgs; [
     seatd
-    waybar
     pipewire
     wireplumber
     distroshelf
@@ -89,6 +96,9 @@
     iproute2
     iputils
     wev
+    nautilus
+    nwg-look
+    papirus-icon-theme
   ];
 
   fonts.fontconfig.enable = true;
@@ -98,11 +108,14 @@
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
-    (runCommand "local-icons" {} ''
-      mkdir -p $out/share/icons
-      cp -r /home/sabrina/.icons/* $out/share/icons/ 2>/dev/null || true
-    '')
+    noto-fonts
+    noto-fonts-color-emoji
+    noto-fonts-cjk-sans
   ];
+
+  fonts.fontconfig.defaultFonts = {
+    emoji = [ "Noto Color Emoji" ];
+  };
 
   environment.etc."profile.d/finix-env.sh".text = ''
     export XCURSOR_SIZE=24
@@ -111,6 +124,8 @@
     export ELECTRON_OZONE_PLATFORM_HINT=auto
     export LANG=es_PY.UTF-8
     export LOCALE_ARCHIVE=/run/current-system/sw/lib/locale/locale-archive
+    export GTK_THEME=Adwaita:dark
+    export XCURSOR_THEME=oreo_black_cursors
   '';
 
   environment.etc."profile.d/aliases.sh".text = ''
@@ -126,7 +141,7 @@
     alias shownetwork="sudo cat /etc/nixos/modules/networking.nix"
     alias showboot="sudo cat /etc/nixos/modules/boot.nix"
     alias shownix="sudo cat /etc/nixos/configuration.nix"
-    alias nixrebuild="sudo nixos-rebuild switch --flake /etc/nixos#finix"
+    alias nixrebuild="sudo git -C /etc/nixos add . && sudo nixos-rebuild switch --flake /etc/nixos#finix"
     alias nixgen="nixos-rebuild list-generations"
     alias edflake="sudo nano /etc/nixos/flake.nix"
     alias showflake="sudo cat /etc/nixos/flake.nix"
@@ -134,5 +149,4 @@
     alias eduser="sudo nano /etc/nixos/modules/users.nix"
     alias clean="clear"
   '';
-
 }

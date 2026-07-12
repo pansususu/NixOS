@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
+  # Basicos del Sistema 
   finit.runlevel = 3;
 
   services.dbus.enable = true;
@@ -30,7 +31,6 @@
     jack.enable = true;
   };
 
-
   programs.niri.enable = true;
 
   services.ly.enable = true;
@@ -43,6 +43,9 @@
 
   services.nix-daemon.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.asusd.enable = true;
+
+  # Spicetify
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {
@@ -56,7 +59,8 @@
       shuffle
     ];
   };
-
+  
+  # Paquetes
   environment.pathsToLink = [ "/share/applications" ];
 
   environment.systemPackages = with pkgs; [
@@ -79,7 +83,6 @@
     btop
     spotify
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    asusctl
     bazaar
     qbittorrent
     brightnessctl
@@ -105,6 +108,7 @@
     xwayland-satellite
   ];
 
+  # Fonts
   xdg.icons.enable = true;
 
   fonts.fontconfig.enable = true;
@@ -123,8 +127,16 @@
     emoji = [ "Noto Color Emoji" ];
   };
 
+  # Browser
   environment.sessionVariables.BROWSER = "vivaldi"; 
 
+  xdg.mime.defaultApplications = {
+    "x-scheme-handler/http" = "vivaldi.desktop";
+    "x-scheme-handler/https" = "vivaldi.desktop";
+    "text/html" = "vivaldi.desktop";
+  };
+
+  # Variables de Entorno
   environment.etc."profile.d/finix-env.sh".text = ''
     export XCURSOR_SIZE=24
     export XCURSOR_THEME=oreo_spark_light_pink_cursors
@@ -136,6 +148,7 @@
     export XCURSOR_THEME=oreo_spark_light_pink_cursors
   '';
 
+  # Aliases de Bash
   environment.etc."profile.d/aliases.sh".text = ''
     alias cdnix="cd /etc/nixos"
     alias ednix="sudo nano /etc/nixos/configuration.nix"

@@ -170,5 +170,7 @@
     alias nixclean="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild"
     alias eduser="sudo nano /etc/nixos/modules/users.nix"
     alias clean="clear"
+    alias showniri="cat ~/.config/niri/config.kdl"
+    alias edniri="nano ~/.config/niri/config.kdl"
   '';
 }

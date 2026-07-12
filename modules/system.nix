@@ -123,7 +123,7 @@
     emoji = [ "Noto Color Emoji" ];
   };
 
-  security.pam.environment.BROWSER = "vivaldi"; 
+  environment.sessionVariables.BROWSER = "vivaldi"; 
 
   environment.etc."profile.d/finix-env.sh".text = ''
     export XCURSOR_SIZE=24

@@ -106,6 +106,7 @@
     steam
     oreo-cursors-plus   
     xwayland-satellite
+    asusctl
   ];
 
   # Fonts

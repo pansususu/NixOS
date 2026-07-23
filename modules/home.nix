@@ -47,8 +47,10 @@
       nixgen       = "nixos-rebuild list-generations";
       nixclean     = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild";
       clean        = "clear";
-      showniri     = "cat ~/.config/niri/config.kdl";
-      edniri       = "nano ~/.config/niri/config.kdl";
+      showniri     = "cat /etc/nixos/modules/niri-config.kdl";
+      edniri       = "sudo nano /etc/nixos/modules/niri-config.kdl";
+      shownoctalia = "cat /etc/nixos/modules/niri-noctalia.kdl";
+      ednoctalia   = "sudo nano /etc/nixos/modules/niri-noctalia.kdl";
     };
   };
 

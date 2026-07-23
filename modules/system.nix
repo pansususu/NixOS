@@ -1,9 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # Basicos del Sistema 
-  finit.runlevel = 3;
-
   services.dbus.enable = true;
 
   xdg.portal = {
@@ -43,7 +40,11 @@
 
   services.nix-daemon.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  security.polkit.enable = true;
+
   services.asusd.enable = true;
+
+  virtualisation.libvirtd.enable = true;
 
   # Spicetify
   programs.spicetify = let

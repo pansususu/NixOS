@@ -33,8 +33,6 @@
     EndSection
   '';
 
-  services.gardendevd.enable = true;
-
   services.seatd.enable = true;
 
   boot.kernelParams = [ "nvidia-drm.modeset=1" ];

@@ -8,8 +8,7 @@
     ./modules/networking.nix
     ./modules/system.nix
     ./modules/users.nix
-    ./services/libvirtd.nix
-    ./services/asusd.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
 }

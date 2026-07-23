@@ -51,22 +51,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1778869304,
-        "narHash": "sha256-30sZNZoA1cqF5JNO9fVX+wgiQYjB7HJqqJ4ztCDeBZE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1765779637,
         "narHash": "sha256-KJ2wa/BLSrTqDjbfyNx70ov/HdgNBCBBSQP3BIzKnv4=",
         "owner": "nixos",
@@ -81,7 +65,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1783224372,
         "narHash": "sha256-FGQ8TfSm9WviNE/fQAWsKs+y4GkX8fU4EScewpw54Y8=",
@@ -112,38 +96,18 @@
         "type": "github"
       }
     },
-    "oxwm": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1783573128,
-        "narHash": "sha256-ZYVL9ScMRv7RafBBX8ysdsjuWui/pcjm7x8fHCUMqsE=",
-        "owner": "tonybanters",
-        "repo": "oxwm",
-        "rev": "afc403f33e4882f3007fb2d5aead402c1dba7ebd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tonybanters",
-        "repo": "oxwm",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
-        "oxwm": "oxwm",
         "silentSDDM": "silentSDDM",
-        "spicetify-nix": "spicetify-nix",
-        "vxwm-src": "vxwm-src"
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "silentSDDM": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1782837720,
@@ -161,7 +125,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "systems": "systems"
       },
       "locked": {
@@ -191,22 +155,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "vxwm-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783203386,
-        "narHash": "sha256-YUDkr2J4tR59Nx9MdO28NkvE5xlDUAZ5Pnmd23nwcHE=",
-        "ref": "refs/heads/main",
-        "rev": "8b9f04c415a96c92fc36b7639cd1877903f3f0eb",
-        "revCount": 105,
-        "type": "git",
-        "url": "https://codeberg.org/wh1tepearl/vxwm.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/wh1tepearl/vxwm.git"
       }
     }
   },

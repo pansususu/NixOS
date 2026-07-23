@@ -9,7 +9,6 @@
     ./modules/system.nix
     ./modules/users.nix
     ./modules/sddm.nix
-    ./modules/oxwm.nix
   ];
 
   system.stateVersion = "26.11";

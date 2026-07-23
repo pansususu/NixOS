@@ -66,7 +66,7 @@
       zstyle ':vcs_info:git:*' check-for-changes true
       zstyle ':vcs_info:git:*' formats ' %F{86}[%F{81}%b%F{86}]%f'
       zstyle ':vcs_info:git:*' actionformats ' %F{86}[%F{208}%b|%a%F{86}]%f'
-      PROMPT='%F{81}%n%F{117}@%F{86}%m%F{81}:%F{117}%~%F{86}'\''${vcs_info_msg_0_}%F{81}'\''%(#.#.❯)%f '\'''
+      PROMPT='%F{81}%n%F{117}@%F{86}%m%F{81}:%F{117}%~%F{86}''${vcs_info_msg_0_}%F{81}%(#.#.❯)%f '
     '';
     shellAliases = {
       cdnix      = "cd /etc/nixos";

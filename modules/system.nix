@@ -89,4 +89,11 @@
   fonts.fontconfig.defaultFonts = {
     emoji = [ "Noto Color Emoji" ];
   };
+
+  # Browser MIME associations
+  xdg.mime.defaultApplications = {
+    "x-scheme-handler/http" = "vivaldi.desktop";
+    "x-scheme-handler/https" = "vivaldi.desktop";
+    "text/html" = "vivaldi.desktop";
+  };
 }

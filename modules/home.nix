@@ -61,11 +61,6 @@
   };
 
   xdg.mime.enable = true;
-  xdg.mime.defaultApplications = {
-    "x-scheme-handler/http" = "vivaldi.desktop";
-    "x-scheme-handler/https" = "vivaldi.desktop";
-    "text/html" = "vivaldi.desktop";
-  };
 
   xresources.properties = {
     "Xcursor.theme" = "oreo_spark_blue_cursors";

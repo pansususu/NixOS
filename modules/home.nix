@@ -79,6 +79,7 @@
       eduser     = "sudo nano /etc/nixos/modules/users.nix";
       edflake    = "sudo nano /etc/nixos/flake.nix";
       edhome     = "sudo nano /etc/nixos/modules/home.nix";
+      showhome   = "sido cat /etc/nixos/modules/home.nix";
       showsystem = "sudo cat /etc/nixos/modules/system.nix";
       showhardware = "sudo cat /etc/nixos/modules/hardware.nix";
       shownetwork  = "sudo cat /etc/nixos/modules/networking.nix";

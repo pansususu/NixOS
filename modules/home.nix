@@ -54,6 +54,40 @@
     };
   };
 
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "sudo" "web-search" "colorize" ];
+    };
+    shellAliases = {
+      cdnix      = "cd /etc/nixos";
+      ednix      = "sudo nano /etc/nixos/configuration.nix";
+      edsystem   = "sudo nano /etc/nixos/modules/system.nix";
+      edhardware = "sudo nano /etc/nixos/modules/hardware.nix";
+      ednetwork  = "sudo nano /etc/nixos/modules/networking.nix";
+      edboot     = "sudo nano /etc/nixos/modules/boot.nix";
+      edusers    = "sudo nano /etc/nixos/modules/users.nix";
+      eduser     = "sudo nano /etc/nixos/modules/users.nix";
+      edflake    = "sudo nano /etc/nixos/flake.nix";
+      edhome     = "sudo nano /etc/nixos/modules/home.nix";
+      showsystem = "sudo cat /etc/nixos/modules/system.nix";
+      showhardware = "sudo cat /etc/nixos/modules/hardware.nix";
+      shownetwork  = "sudo cat /etc/nixos/modules/networking.nix";
+      showboot     = "sudo cat /etc/nixos/modules/boot.nix";
+      shownix      = "sudo cat /etc/nixos/configuration.nix";
+      showflake    = "sudo cat /etc/nixos/flake.nix";
+      nixrebuild   = "sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'auto: update config' && sudo nixos-rebuild switch --flake /etc/nixos#finix";
+      nixgen       = "nixos-rebuild list-generations";
+      nixclean     = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild";
+      clean        = "clear";
+      showniri     = "cat /etc/nixos/modules/niri-config.kdl";
+      edniri       = "sudo nano /etc/nixos/modules/niri-config.kdl";
+      shownoctalia = "cat /etc/nixos/modules/niri-noctalia.kdl";
+      ednoctalia   = "sudo nano /etc/nixos/modules/niri-noctalia.kdl";
+    };
+  };
+
   home.sessionVariables = {
     XCURSOR_SIZE = "32";
     XCURSOR_THEME = "oreo_spark_blue_cursors";

@@ -102,7 +102,8 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "silentSDDM": "silentSDDM",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "vxwm-src": "vxwm-src"
       }
     },
     "silentSDDM": {
@@ -155,6 +156,18 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "vxwm-src": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-G/L3laiETF2czSuctmyBRTW94NUh1/GHBrIebTE+5Jo=",
+        "type": "file",
+        "url": "https://codeberg.org/wh1tepearl/vxwm"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://codeberg.org/wh1tepearl/vxwm"
       }
     }
   },

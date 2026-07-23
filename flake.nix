@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vxwm-src = {
-      url = "https://codeberg.org/wh1tepearl/vxwm";
+      url = "git+https://codeberg.org/wh1tepearl/vxwm.git";
       flake = false;
     };
   };

@@ -10,6 +10,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vxwm-src = {
+      url = "https://codeberg.org/wh1tepearl/vxwm";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, spicetify-nix, noctalia, silentSDDM, home-manager, ... }@inputs: {
@@ -20,6 +24,7 @@
         ./configuration.nix
         spicetify-nix.nixosModules.spicetify
         silentSDDM.nixosModules.default
+        ./modules/vxwm.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {

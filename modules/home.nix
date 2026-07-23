@@ -1,0 +1,74 @@
+{ config, pkgs, inputs, ... }:
+
+{
+  home.username = "sabrina";
+  home.homeDirectory = "/home/sabrina";
+  home.stateVersion = "24.11";
+
+  programs.home-manager.enable = true;
+
+  home.packages = with pkgs; [
+    vivaldi alacritty obsidian vscode discord spotify
+    qbittorrent prismlauncher nautilus micro opencode
+    helix fastfetch btop rofi playerctl brightnessctl
+    pavucontrol virt-manager nwg-look xwayland-satellite
+    python3 bazaar cowsay
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    papirus-icon-theme oreo-cursors-plus
+    vinegar
+  ];
+
+  xdg.configFile."niri/config.kdl".source = ./niri-config.kdl;
+  xdg.configFile."niri/noctalia.kdl".source = ./niri-noctalia.kdl;
+
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''
+      . /etc/bashrc
+    '';
+    shellAliases = {
+      cdnix      = "cd /etc/nixos";
+      ednix      = "sudo nano /etc/nixos/configuration.nix";
+      edsystem   = "sudo nano /etc/nixos/modules/system.nix";
+      edhardware = "sudo nano /etc/nixos/modules/hardware.nix";
+      ednetwork  = "sudo nano /etc/nixos/modules/networking.nix";
+      edboot     = "sudo nano /etc/nixos/modules/boot.nix";
+      edusers    = "sudo nano /etc/nixos/modules/users.nix";
+      eduser     = "sudo nano /etc/nixos/modules/users.nix";
+      edflake    = "sudo nano /etc/nixos/flake.nix";
+      edhome     = "sudo nano /etc/nixos/modules/home.nix";
+      showsystem = "sudo cat /etc/nixos/modules/system.nix";
+      showhardware = "sudo cat /etc/nixos/modules/hardware.nix";
+      shownetwork  = "sudo cat /etc/nixos/modules/networking.nix";
+      showboot     = "sudo cat /etc/nixos/modules/boot.nix";
+      shownix      = "sudo cat /etc/nixos/configuration.nix";
+      showflake    = "sudo cat /etc/nixos/flake.nix";
+      nixrebuild   = "sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'auto: update config' && sudo nixos-rebuild switch --flake /etc/nixos#finix";
+      nixgen       = "nixos-rebuild list-generations";
+      nixclean     = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild";
+      clean        = "clear";
+      showniri     = "cat ~/.config/niri/config.kdl";
+      edniri       = "nano ~/.config/niri/config.kdl";
+    };
+  };
+
+  home.sessionVariables = {
+    XCURSOR_SIZE = "32";
+    XCURSOR_THEME = "oreo_spark_blue_cursors";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    GTK_THEME = "Adwaita:dark";
+    BROWSER = "vivaldi";
+  };
+
+  xdg.mime.enable = true;
+  xdg.mime.defaultApplications = {
+    "x-scheme-handler/http" = "vivaldi.desktop";
+    "x-scheme-handler/https" = "vivaldi.desktop";
+    "text/html" = "vivaldi.desktop";
+  };
+
+  xresources.properties = {
+    "Xcursor.theme" = "oreo_spark_blue_cursors";
+    "Xcursor.size" = 32;
+  };
+}

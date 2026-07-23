@@ -5,4 +5,9 @@
     enable = true;
     theme = "default";
   };
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "sabrina";
+  };
 }

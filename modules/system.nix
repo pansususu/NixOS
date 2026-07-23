@@ -49,55 +49,26 @@
     ];
   };
 
-  # Paquetes
+  # Paquetes de sistema
   environment.pathsToLink = [ "/share/applications" ];
 
   environment.systemPackages = with pkgs; [
     seatd
     pipewire
     wireplumber
-    distroshelf
-    distrobox
-    vinegar
-    vivaldi
     nano
     pkgs.dnsutils
     fortune
     wget
-    helix
-    obsidian
-    alacritty
     git
-    fastfetch
-    btop
-    spotify
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    bazaar
-    qbittorrent
-    brightnessctl
-    virt-manager
-    pavucontrol
-    prismlauncher
-    killall
-    cowsay
-    discord
-    rofi
-    playerctl
-    vscode
-    python3
     nixos-rebuild-ng
     iproute2
     iputils
+    killall
     wev
-    nautilus
-    nwg-look
-    papirus-icon-theme
-    steam
-    oreo-cursors-plus
-    xwayland-satellite
-    micro
-    opencode
     asusctl
+    steam
+    distrobox
   ];
 
   # Fonts
@@ -118,55 +89,4 @@
   fonts.fontconfig.defaultFonts = {
     emoji = [ "Noto Color Emoji" ];
   };
-
-  # Browser
-  environment.sessionVariables.BROWSER = "vivaldi";
-
-  xdg.mime.defaultApplications = {
-    "x-scheme-handler/http" = "vivaldi.desktop";
-    "x-scheme-handler/https" = "vivaldi.desktop";
-    "text/html" = "vivaldi.desktop";
-  };
-
-  # Variables de Entorno
-  environment.etc."profile.d/finix-env.sh".text = ''
-    export XCURSOR_SIZE=32
-    export XCURSOR_THEME=oreo_spark_blue_cursors
-    export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
-    export ELECTRON_OZONE_PLATFORM_HINT=auto
-    export LANG=es_PY.UTF-8
-    export LOCALE_ARCHIVE=/run/current-system/sw/lib/locale/locale-archive
-    export GTK_THEME=Adwaita:dark
-  '';
-
-  # Bash: crear ~/.bashrc para que shells no-login carguen /etc/bashrc
-  system.activationScripts.bashrc = ''
-    echo '. /etc/bashrc' > /home/sabrina/.bashrc
-    chown sabrina:users /home/sabrina/.bashrc
-  '';
-
-  # Aliases de Bash
-  programs.bash.interactiveShellInit = ''
-    alias cdnix="cd /etc/nixos"
-    alias ednix="sudo nano /etc/nixos/configuration.nix"
-    alias edsystem="sudo nano /etc/nixos/modules/system.nix"
-    alias edhardware="sudo nano /etc/nixos/modules/hardware.nix"
-    alias ednetwork="sudo nano /etc/nixos/modules/networking.nix"
-    alias edboot="sudo nano /etc/nixos/modules/boot.nix"
-    alias edusers="sudo nano /etc/nixos/modules/users.nix"
-    alias showsystem="sudo cat /etc/nixos/modules/system.nix"
-    alias showhardware="sudo cat /etc/nixos/modules/hardware.nix"
-    alias shownetwork="sudo cat /etc/nixos/modules/networking.nix"
-    alias showboot="sudo cat /etc/nixos/modules/boot.nix"
-    alias shownix="sudo cat /etc/nixos/configuration.nix"
-    alias nixrebuild="sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'auto: update config' && sudo nixos-rebuild switch --flake /etc/nixos#finix"
-    alias nixgen="nixos-rebuild list-generations"
-    alias edflake="sudo nano /etc/nixos/flake.nix"
-    alias showflake="sudo cat /etc/nixos/flake.nix"
-    alias nixclean="sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 && sudo nix-store --gc && nixrebuild"
-    alias eduser="sudo nano /etc/nixos/modules/users.nix"
-    alias clean="clear"
-    alias showniri="cat ~/.config/niri/config.kdl"
-    alias edniri="nano ~/.config/niri/config.kdl"
-  '';
 }

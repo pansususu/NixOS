@@ -26,7 +26,7 @@
         spicetify-nix.nixosModules.spicetify
         silentSDDM.nixosModules.default
         ./modules/vxwm.nix
-        oxwm.nixosModules.default
+        ./modules/oxwm.nix
         home-manager.nixosModules.home-manager
         {
           home-manager = {

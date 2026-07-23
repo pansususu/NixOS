@@ -25,6 +25,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            backupFileExtension = "hm-backup";
             extraSpecialArgs = { inherit inputs; };
             users.sabrina = import ./modules/home.nix;
           };

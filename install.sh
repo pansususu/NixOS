@@ -14,6 +14,19 @@ echo ""
 read -rp 'Type "yes" to continue: ' answer
 [ "$answer" = "yes" ] || exit 1
 
+# --- Passwords ---
+read -rsp 'Enter root password: ' root_pass
+echo
+read -rsp 'Confirm root password: ' root_pass2
+echo
+[ "$root_pass" = "$root_pass2" ] || { echo "Passwords do not match"; exit 1; }
+
+read -rsp "Enter password for user sabrina: " user_pass
+echo
+read -rsp "Confirm password for sabrina: " user_pass2
+echo
+[ "$user_pass" = "$user_pass2" ] || { echo "Passwords do not match"; exit 1; }
+
 set -x
 
 # Partition
@@ -42,11 +55,16 @@ swapon "${DISK}p2"
 nix-env -iA nixos.git 2>/dev/null || true
 git clone "$REPO" /mnt/etc/nixos
 
-# Generate hardware config for target
+# Generate hardware config for target (detects swap automatically)
 nixos-generate-config --root /mnt
 
-# Install
+# Install (non-interactive, we set passwords afterwards)
 nixos-install --no-root-passwd --flake /mnt/etc/nixos#finix
+
+# Set passwords inside the installed system
+nixos-enter --root /mnt -- bash -c "echo 'root:$root_pass' | chpasswd"
+nixos-enter --root /mnt -- bash -c "echo 'sabrina:$user_pass' | chpasswd"
 
 echo ""
 echo "Done! Reboot with: sudo reboot"
+echo "After reboot, log in as sabrina and run 'passwd' to change your password."

@@ -1,25 +1,11 @@
 { config, pkgs, inputs, ... }:
 
 {
-  services.dbus.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    portals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-    ];
-  };
-
   time.timeZone = "America/Asuncion";
 
   i18n.defaultLocale = "es_PY.UTF-8";
-  hardware.console.keyMap = "la-latin1";
 
-  programs.xorg = {
-    enable = true;
-    xkb.layout = "latam";
-  };
+  hardware.console.keyMap = "la-latin1";
 
   programs.pipewire = {
     enable = true;
@@ -30,21 +16,23 @@
 
   programs.niri.enable = true;
 
-  services.ly.enable = true;
+  xdg.portal = {
+    enable = true;
+    portals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+  };
 
   services.flatpak.enable = true;
-
-  services.sysklogd.enable = true;
-
-  services.nix-daemon.enable = true;
-
-  services.nix-daemon.settings.experimental-features = [ "nix-command" "flakes" ];
 
   security.polkit.enable = true;
 
   services.asusd.enable = true;
 
   virtualisation.libvirtd.enable = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Spicetify
   programs.spicetify = let
@@ -60,7 +48,7 @@
       shuffle
     ];
   };
-  
+
   # Paquetes
   environment.pathsToLink = [ "/share/applications" ];
 
@@ -105,7 +93,7 @@
     nwg-look
     papirus-icon-theme
     steam
-    oreo-cursors-plus   
+    oreo-cursors-plus
     xwayland-satellite
     asusctl
   ];
@@ -130,7 +118,7 @@
   };
 
   # Browser
-  environment.sessionVariables.BROWSER = "vivaldi"; 
+  environment.sessionVariables.BROWSER = "vivaldi";
 
   xdg.mime.defaultApplications = {
     "x-scheme-handler/http" = "vivaldi.desktop";

@@ -161,13 +161,17 @@
     "vxwm-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-G/L3laiETF2czSuctmyBRTW94NUh1/GHBrIebTE+5Jo=",
-        "type": "file",
-        "url": "https://codeberg.org/wh1tepearl/vxwm"
+        "lastModified": 1783203386,
+        "narHash": "sha256-YUDkr2J4tR59Nx9MdO28NkvE5xlDUAZ5Pnmd23nwcHE=",
+        "ref": "refs/heads/main",
+        "rev": "8b9f04c415a96c92fc36b7639cd1877903f3f0eb",
+        "revCount": 105,
+        "type": "git",
+        "url": "https://codeberg.org/wh1tepearl/vxwm.git"
       },
       "original": {
-        "type": "file",
-        "url": "https://codeberg.org/wh1tepearl/vxwm"
+        "type": "git",
+        "url": "https://codeberg.org/wh1tepearl/vxwm.git"
       }
     }
   },

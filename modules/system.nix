@@ -146,7 +146,7 @@
   '';
 
   # Aliases de Bash
-  programs.bash.shellInit = ''
+  programs.bash.interactiveShellInit = ''
     alias cdnix="cd /etc/nixos"
     alias ednix="sudo nano /etc/nixos/configuration.nix"
     alias edsystem="sudo nano /etc/nixos/modules/system.nix"

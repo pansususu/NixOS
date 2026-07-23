@@ -30,7 +30,7 @@ echo
 set -x
 
 # Partition
-parted "$DISK" -- mklabel gpt \
+parted -s "$DISK" -- mklabel gpt \
     mkpart primary fat32 1MiB 1025MiB \
     mkpart primary linux-swap 1025MiB 17409MiB \
     mkpart primary ext4 17409MiB 89473MiB \

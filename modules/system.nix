@@ -36,7 +36,7 @@
 
   # Spicetify
   programs.spicetify = let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     enable = true;
     spotifyPackage = pkgs.spotify;

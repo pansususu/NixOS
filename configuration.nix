@@ -12,5 +12,6 @@
     ./modules/oxwm.nix
   ];
 
+  system.stateVersion = "26.11";
   nixpkgs.config.allowUnfree = true;
 }

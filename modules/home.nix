@@ -20,11 +20,6 @@
     opencode
     fastfetch
     btop
-    rofi
-    feh
-    slock
-    maim
-    xdotool
     playerctl 
     brightnessctl
     pavucontrol 

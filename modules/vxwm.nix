@@ -8,6 +8,8 @@ let
   };
 in
 {
+  services.xserver.enable = true;
+
   environment.systemPackages = [ vxwm ];
 
   services.xserver.windowManager.session = [{

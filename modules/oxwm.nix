@@ -4,6 +4,8 @@ let
     gitRev = inputs.oxwm.rev or inputs.oxwm.shortRev or "unknown";
   };
 in {
+  services.xserver.enable = true;
+
   environment.systemPackages = [ oxwm ];
 
   services.xserver.windowManager.session = [{

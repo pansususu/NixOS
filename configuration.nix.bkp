@@ -8,7 +8,6 @@
     ./modules/networking.nix
     ./modules/system.nix
     ./modules/users.nix
-    ./modules/sddm.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

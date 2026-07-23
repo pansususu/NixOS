@@ -5,17 +5,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     noctalia.url = "github:noctalia-dev/noctalia";
-    silentSDDM.url = "github:uiriansan/SilentSDDM";
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, noctalia, silentSDDM, ... }@inputs: {
+  outputs = { self, nixpkgs, spicetify-nix, noctalia, ... }@inputs: {
     nixosConfigurations.finix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
         spicetify-nix.nixosModules.spicetify
-        silentSDDM.nixosModules.default
       ];
     };
   };

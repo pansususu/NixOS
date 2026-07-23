@@ -8,13 +8,35 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    vivaldi alacritty obsidian vscode discord
-    qbittorrent prismlauncher nautilus micro opencode
-    helix fastfetch btop rofi playerctl brightnessctl
-    pavucontrol virt-manager nwg-look xwayland-satellite
-    python3 bazaar cowsay
+    vivaldi
+    alacritty 
+    obsidian 
+    vscode
+    discord
+    qbittorrent
+    prismlauncher 
+    nautilus 
+    micro 
+    opencode
+    fastfetch
+    btop
+    rofi
+    feh
+    slock
+    maim
+    xdotool
+    playerctl 
+    brightnessctl
+    pavucontrol 
+    virt-manager 
+    nwg-look 
+    xwayland-satellite
+    python3 
+    bazaar 
+    cowsay
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    papirus-icon-theme oreo-cursors-plus
+    papirus-icon-theme
+    oreo-cursors-plus
     vinegar
   ];
 

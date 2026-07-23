@@ -14,9 +14,10 @@
       url = "git+https://codeberg.org/wh1tepearl/vxwm.git";
       flake = false;
     };
+    oxwm.url = "github:tonybanters/oxwm";
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, noctalia, silentSDDM, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, spicetify-nix, noctalia, silentSDDM, home-manager, oxwm, ... }@inputs: {
     nixosConfigurations.finix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -25,6 +26,7 @@
         spicetify-nix.nixosModules.spicetify
         silentSDDM.nixosModules.default
         ./modules/vxwm.nix
+        oxwm.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {

@@ -8,7 +8,7 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    vivaldi alacritty obsidian vscode discord spotify
+    vivaldi alacritty obsidian vscode discord
     qbittorrent prismlauncher nautilus micro opencode
     helix fastfetch btop rofi playerctl brightnessctl
     pavucontrol virt-manager nwg-look xwayland-satellite

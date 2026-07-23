@@ -2,7 +2,7 @@
 
 {
   networking.hostName = "finix";
-  services.iwd.enable = true;
+  networking.networkmanager.enable = true;
 
   services.openssh.enable = true;
 

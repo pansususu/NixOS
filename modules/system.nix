@@ -5,22 +5,22 @@
 
   i18n.defaultLocale = "es_PY.UTF-8";
 
-  hardware.console.keyMap = "la-latin1";
+  console.keyMap = "la-latin1";
 
-  programs.pipewire = {
+  services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
-    jack.enable = true;
+    pulse.enable = true;
   };
 
   programs.niri.enable = true;
 
   xdg.portal = {
     enable = true;
-    portals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
     ];
   };
 
@@ -95,6 +95,8 @@
     steam
     oreo-cursors-plus
     xwayland-satellite
+    micro
+    opencode
     asusctl
   ];
 
@@ -128,18 +130,23 @@
 
   # Variables de Entorno
   environment.etc."profile.d/finix-env.sh".text = ''
-    export XCURSOR_SIZE=24
-    export XCURSOR_THEME=oreo_spark_light_pink_cursors
+    export XCURSOR_SIZE=32
+    export XCURSOR_THEME=oreo_spark_blue_cursors
     export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
     export ELECTRON_OZONE_PLATFORM_HINT=auto
     export LANG=es_PY.UTF-8
     export LOCALE_ARCHIVE=/run/current-system/sw/lib/locale/locale-archive
     export GTK_THEME=Adwaita:dark
-    export XCURSOR_THEME=oreo_spark_light_pink_cursors
+  '';
+
+  # Bash: crear ~/.bashrc para que shells no-login carguen /etc/bashrc
+  system.activationScripts.bashrc = ''
+    echo '. /etc/bashrc' > /home/sabrina/.bashrc
+    chown sabrina:users /home/sabrina/.bashrc
   '';
 
   # Aliases de Bash
-  environment.etc."profile.d/aliases.sh".text = ''
+  programs.bash.shellInit = ''
     alias cdnix="cd /etc/nixos"
     alias ednix="sudo nano /etc/nixos/configuration.nix"
     alias edsystem="sudo nano /etc/nixos/modules/system.nix"

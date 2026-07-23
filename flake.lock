@@ -1,20 +1,5 @@
 {
   "nodes": {
-    "finix": {
-      "locked": {
-        "lastModified": 1783644020,
-        "narHash": "sha256-ljQ/axwnbwwbvBMjfxinIa0WZKp62bppirjChNV5J9c=",
-        "owner": "FixeQD",
-        "repo": "finix",
-        "rev": "1d4cd9cafdae4a5c0b48526c56f9ff115ba8d6fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "FixeQD",
-        "repo": "finix",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1783224372,
@@ -77,7 +62,6 @@
     },
     "root": {
       "inputs": {
-        "finix": "finix",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "spicetify-nix": "spicetify-nix"

@@ -8,5 +8,4 @@
     packages = with pkgs; [ tree ];
   };
 
-  programs.sudo.enable = true;
 }
